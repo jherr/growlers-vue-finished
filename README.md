@@ -27,3 +27,11 @@ The Micro-FEs are hosted on [http://localhost:8080](http://localhost:8080).
 They are used by a Vue based client application on [http://localhost:8081](http://localhost:8081).
 
 They are used by a vanilla client application on [http://localhost:8082](http://localhost:8082).
+
+# What this demonstrates
+
+* How easy it is to share Vue Micro-FEs using Module Federation
+* Using `reactive` to share data between Micro-FEs mounted in disparate parts of the DOM tree
+* Subscribing to the stores used by the Micro-FEs in the Vue host applicaton
+* Vanilla wrappers for the Vue Micro-FE components hosted on a vanilla page
+* The vanilla page subscribing to the Micro-FE store and showing updates as the state changes
