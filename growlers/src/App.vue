@@ -9,16 +9,17 @@
 </div>
 </template>
 
-<script>
-import Taps from './components/Taps';
-import Search from './components/Search';
-import Cart from './components/Cart';
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  import Taps from './components/Taps';
+  import Search from './components/Search';
+  import Cart from './components/Cart';
 
-export default {
-  components: {
-    Search,
-    Taps,
-    Cart,
-  }
-}
+  export default defineComponent({
+    components: {
+      Search,
+      Taps,
+      Cart,
+    }
+  })
 </script>

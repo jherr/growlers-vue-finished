@@ -16,11 +16,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import store, { setAlcoholLimit, setSearchText } from "../store";
 import { MFE_BORDER } from '../constants';
 
-export default {
+export default defineComponent({
   computed: {
     border: () => MFE_BORDER,
     searchText: {
@@ -40,5 +41,5 @@ export default {
       }
     }
   }
-}
+})
 </script>

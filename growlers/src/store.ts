@@ -1,6 +1,15 @@
 import { reactive, watchEffect } from "vue";
+import { Beverage } from "./types";
 
-const store = reactive({
+export interface IStore {
+  taps: Beverage[];
+  searchText: string;
+  alcoholLimit: number;
+  filteredTaps: Beverage[];
+  cart: Beverage[];
+}
+
+const store = reactive<IStore>({
   taps: [],
   searchText: "",
   alcoholLimit: 10,
@@ -18,7 +27,7 @@ const filter = () => {
     .slice(0, 15);
 };
 
-export const load = (client) => {
+export const load = (client: string): void => {
   fetch(`http://localhost:8080/${client}.json`)
     .then((resp) => resp.json())
     .then((taps) => {
@@ -27,22 +36,23 @@ export const load = (client) => {
     });
 };
 
-export const setSearchText = (text) => {
+export const setSearchText = (text: string): void => {
   store.searchText = text;
   store.filteredTaps = filter();
 };
 
-export const setAlcoholLimit = (limit) => {
+export const setAlcoholLimit = (limit: number): void => {
   store.alcoholLimit = limit;
   store.filteredTaps = filter();
 };
 
-export const addToCart = (beverage) => {
+export const addToCart = (beverage: Beverage): void => {
   store.cart.push(beverage);
 };
 
-const subscribers = [];
-export const subscribe = (callback) => {
+type Callback = (store: IStore) => void;
+const subscribers: Callback[] = [];
+export const subscribe = (callback: Callback) => {
   callback(store);
   subscribers.push(callback);
 };

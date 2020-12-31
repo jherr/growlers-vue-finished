@@ -26,26 +26,30 @@
   </div>
 </template>
 
-<script>
-import store, { addToCart } from "../store";
+<script lang="ts">
+import { defineComponent } from 'vue'
+import store, { addToCart, IStore } from "../store";
 import { MFE_BORDER } from '../constants';
+import { Beverage } from '../types';
 
-export default {
+export default defineComponent({
   computed: {
     border: () => MFE_BORDER,
     cart: {
       get() { 
         return store.cart;
+      },
+      set(store) {
       }
     }
   },
   methods: {
-    addToCart(tap) {
+    addToCart(tap: Beverage) {
       addToCart(tap)
     },
     checkout() {
       store.cart = [];
     }
   }
-}
+})
 </script>

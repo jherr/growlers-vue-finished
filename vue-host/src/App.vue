@@ -46,7 +46,8 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component } from "Vue";
 import Taps from 'growlers/Taps';
 import Search from 'growlers/Search';
 import Cart from 'growlers/Cart';
@@ -61,7 +62,9 @@ export default {
   computed: {
     filteredTaps: {
       get() {
-        return store.filteredTaps.slice(0, 3).map(({ beverageName }) => beverageName).join(', ');
+        return store.filteredTaps.slice(0, 3).map(({ beverageName }: { beverageName: string }) => beverageName).join(', ');
+      },
+      set() {
       }
     }
   }

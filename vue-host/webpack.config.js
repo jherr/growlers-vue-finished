@@ -9,7 +9,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".vue", ".jsx", ".js", ".json"],
+    extensions: [".vue", ".tsx", ".ts", ".jsx", ".js", ".json"],
   },
 
   devServer: {
@@ -23,15 +23,16 @@ module.exports = {
         loader: "vue-loader",
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+        exclude: /node_modules/,
       },
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },

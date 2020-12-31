@@ -32,23 +32,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import store, { addToCart } from "../store";
 import { MFE_BORDER } from '../constants';
+import { Beverage } from '../types';
 
-export default {
+export default defineComponent({
   computed: {
     border: () => MFE_BORDER,
     filteredTaps: {
       get() { 
         return store.filteredTaps;
+      },
+      set(list) {
       }
     }
   },
   methods: {
-    addToCart(tap) {
+    addToCart(tap: Beverage) {
       addToCart(tap)
     }
   }
-}
+})
 </script>

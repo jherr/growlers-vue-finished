@@ -7,9 +7,9 @@ import mountCart from "growlers/VanillaCart";
 
 load("hv-taplist");
 
-mountTaps("#taps");
-mountSearch("#search");
-mountCart("#cart");
+// mountTaps("#taps");
+// mountSearch("#search");
+// mountCart("#cart");
 
 subscribe(({ filteredTaps }) => {
   document.getElementById("like").innerText = filteredTaps
